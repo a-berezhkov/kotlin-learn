@@ -20,6 +20,7 @@ fun main() {
     println(calculate(Card.VISA, 100.00, 100.00))
     println(calculate(Card.VK_PAY, 1000.00, 0.00))
     println(calculate(Card.MASTERCARD, 100_000.00, 0.00))
+    println(calculate(Card.VISA, 100_000.00))
 }
 
 private fun secToText(countSecond: Int): String {
@@ -61,7 +62,7 @@ enum class Card {
 
 }
 
-private fun calculate(cardType: Card = Card.VK_PAY, sumTransfer: Double, sumTransferMonth: Double = 0.00): Double {
+public fun calculate(cardType: Card = Card.VK_PAY, sumTransfer: Double, sumTransferMonth: Double = 0.00): Double {
     val pay = when (cardType) {
         Card.VK_PAY -> sumTransfer
         Card.MASTERCARD, Card.MAESTRO -> if (sumTransfer in 300.0..75000.0) sumTransfer else sumTransfer + (sumTransfer * 0.94 + 20)
